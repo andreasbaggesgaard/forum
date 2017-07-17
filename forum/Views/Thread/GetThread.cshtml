@@ -1,0 +1,59 @@
+﻿@model forum.Models.ViewModels.ThreadsViewModel
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity;
+
+@{
+    ViewData["Title"] = "Thread";
+}
+
+<br />
+<a asp-controller="Home" asp-action="Index">Back</a><br />
+
+    <div class="thread__content">
+        <h1 class="thread__title">@Model.Thread.Subject</h1> 
+	    <hr />
+        <h5 class="thread__text" style="text-align: center">@Model.Thread.Text</h5> <br />
+	    <div class="thread__created">@Model.Thread.Created</div>
+	    <img src="/@Model.Thread.Picture" alt="@Model.Thread.Picture" width="100%" />
+	</div><br />
+
+        <div class="row">
+    
+             @foreach(var item in Model.Posts){
+                <div class="col-md-12">
+                    <div class="post">
+						@if(item.Person.Picture.StartsWith("uploads")){
+			                 <img src="/@item.Person.Picture" alt="" width="50" class="post__image img-responsive"/>
+						} else {
+                             <img src="@item.Person.Picture" alt="" width="50" class="post__image img-responsive"/>
+			            }                     
+                        <div class="post__content">
+                             <p class="post__text">@item.Text</p>
+                             <p class="post__username"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> @item.Person.UserName</p>
+                        </div>
+                        <div class="post__delete">                
+                            <form asp-controller="Post" asp-action="RemovePost" method="post">
+                                <input type="hidden" asp-for="@Model.Post.ID" value="@item.ID">
+                                <input type="hidden" asp-for="@Model.Thread.ID">
+                                <button type="submit" class="post__button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </form>         
+                        </div>
+                    </div>    
+                </div>        
+            }
+                <div class="thread__form">
+                    <form asp-controller="Post" asp-action="AddPost" method="post">
+                        <textarea asp-for="Post.Text" asp-validation-for="Post.Text" class="form-control" placeholder="Join the discussion.."></textarea>
+                        <input type="hidden" asp-for="@Model.Thread.ID">
+                        <button type="submit" class="thread__form-button btn btn-primary">Add post</button>
+                    </form>
+                </div>   
+        </div>
+
+
+
+    
+        
+
+
+ 

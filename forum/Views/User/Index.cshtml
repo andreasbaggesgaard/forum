@@ -1,0 +1,16 @@
+﻿@model forum.Models.ViewModels.UsersViewModel
+
+@{
+    ViewData["Title"] = "Register user";
+}
+
+    <h4>New user</h4>
+    <form asp-controller="User" asp-action="CreateUser" method="post">
+	    Username:  <input asp-for="Username" /> <br />
+	    Password: <input asp-for="Password" /><br />
+	    <button type="submit">Register</button>
+    </form>
+
+    @if(TempData["userMessage"] != null){
+        @TempData["userMessage"]
+    }

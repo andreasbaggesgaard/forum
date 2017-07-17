@@ -1,0 +1,25 @@
+﻿@model forum.Models.ViewModels.ThreadsViewModel
+
+@{
+    ViewData["Title"] = "Add a thread";
+}
+
+<br />
+
+<div class="col-md-6">
+	<a asp-controller="Home" asp-action="Index">Back</a><br />
+	<h3>Add a new thread</h3>
+	
+	<div class="addthread__form">
+	    <form asp-controller="Thread" asp-action="AddThread" method="post" enctype="multipart/form-data">
+	        <input type="text" asp-for="@Model.Thread.Subject" placeholder="  Subject"><br /><br />
+	        <textarea asp-for="Thread.Text" asp-validation-for="Thread.Text" class="form-control" placeholder="Text"></textarea><br />
+			<div class="form-group">
+		        <input type="file" name="Picture" asp-for="@Model.Thread.Picture">
+		        <p class="help-block">Upload a picture</p>
+		    </div>
+	        <button type="submit" class="thread__form-button btn btn-primary">Add thread</button>
+	    </form>
+	</div>
+	
+</div>

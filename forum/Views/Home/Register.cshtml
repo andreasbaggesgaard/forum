@@ -1,0 +1,21 @@
+﻿@model forum.Models.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<a asp-controller="Home" asp-action="Index">Back</a><br /><br />
+
+<form asp-controller="Home" asp-action="Register" method="post" enctype="multipart/form-data">
+    Username:  <input asp-for="Username" /> <br />
+    Password: <input asp-for="Password" /><br />
+	Confirm Password: <input asp-for="ConfirmPassword" /><br /><br/>
+	<div class="form-group">
+        <input type="file" name="Picture" asp-for="Picture">
+        <p class="help-block">Upload a picture</p>
+    </div>
+	
+    <button type="submit">Register</button>
+</form>
+
+<h1>@TempData["path"]</h1>

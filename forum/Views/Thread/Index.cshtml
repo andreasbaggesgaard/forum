@@ -1,0 +1,10 @@
+﻿@model forum.Models.ViewModels.ThreadsViewModel
+
+@{
+    ViewData["Title"] = "Discussions";
+}
+
+
+    @foreach (var item in Model.Threads) {
+        <a asp-controller="Thread" asp-action="GetThread" asp-route-id="@item.ID">@item.Subject</a> <br />
+    } 

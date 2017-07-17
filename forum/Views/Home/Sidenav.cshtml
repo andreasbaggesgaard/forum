@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+   <div class="col-sm-3 col-md-2 sidebar">
+	<h3 class="sidebar-title"><a asp-controller="Home" asp-action="Index">Forum</a></h3>
+      <ul class="nav nav-sidebar">
+        <li class="active"><a asp-controller="Thread" asp-action="Index">Discussions</a></li>
+        <li><a href="#">Sign in</a></li>
+        <li><a asp-controller="User" asp-action="Index">Register</a></li>
+      </ul>
+    </div>
+

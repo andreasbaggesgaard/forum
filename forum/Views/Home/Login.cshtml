@@ -1,0 +1,12 @@
+﻿@model forum.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Home" asp-action="Login" method="post">
+	<label for="Username"></label>
+    Username:  <input asp-for="Username" /> <br />
+	<label for="Password"></label>
+    Password: <input asp-for="Password" /><br />
+    <button type="submit">Login</button>
+</form>
